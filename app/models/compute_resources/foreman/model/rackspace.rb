@@ -105,7 +105,6 @@ module Foreman::Model
         :rackspace_auth_url => url,
         :rackspace_region => region.downcase.to_sym
       )
-      return @client
     end
 
     def vm_instance_defaults

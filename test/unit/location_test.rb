@@ -224,7 +224,7 @@ class LocationTest < ActiveSupport::TestCase
     location = Location.create :name => "rack1", :parent_id => parent2.id
     assert TaxableTaxonomy.create(:taxonomy_id => parent2.id, :taxable_id => subnets(:three).id, :taxable_type => "Subnet")
     assert_equal [subnets(:one).id, subnets(:two).id, subnets(:three).id].sort, location.selected_or_inherited_ids["subnet_ids"].sort
-   end
+  end
 
   test "parameter inheritence with no new parameters on child location" do
     assert_equal [parameters(:location)], taxonomies(:location1).location_parameters
@@ -233,7 +233,7 @@ class LocationTest < ActiveSupport::TestCase
     location = Location.create :name => "floor1", :parent_id => taxonomies(:location1).id
     assert_equal [], location.location_parameters
     assert_equal Hash['loc_param', 'abc'], location.parameters
-   end
+  end
 
   test "parameter inheritence with new parameters on child location" do
     assert_equal [parameters(:location)], taxonomies(:location1).location_parameters
@@ -246,7 +246,7 @@ class LocationTest < ActiveSupport::TestCase
     child_param = child_location.location_parameters.create(:name => "child_param", :value => "123")
 
     assert_equal Hash['loc_param', 'abc', 'child_param', '123'], child_location.parameters
-   end
+  end
 
   test "cannot delete location that is a parent for nested location" do
     parent1 = taxonomies(:location2)
